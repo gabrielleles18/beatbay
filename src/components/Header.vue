@@ -1,14 +1,23 @@
 <script setup>
 import IconArrow from "@/components/icons/IconArrow.vue";
 import BreadCrumb from "@/components/BreadCrumb";
+import IconSearch from "@/components/icons/IconSearch.vue";
+import IconBell from "@/components/icons/IconBell.vue";
 </script>
 
 <template>
     <header>
-        <div class="back">
+        <div class="box arrow">
             <IconArrow/>
         </div>
         <BreadCrumb/>
+        <div class="search-wrapper">
+            <IconSearch/>
+            <input type="text" placeholder="Search music, artist, albums..."/>
+        </div>
+        <div class="box">
+            <IconBell/>
+        </div>
     </header>
 </template>
 
@@ -16,10 +25,10 @@ import BreadCrumb from "@/components/BreadCrumb";
 header {
     display: flex;
     align-items: center;
-    gap: 1.6rem;
+    gap: 2.4rem;
 }
 
-.back {
+.box {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,13 +40,41 @@ header {
     transition: background-color 0.2s;
 }
 
-.back:hover {
+.box:hover {
     background-color: #333;
 }
 
-.back svg {
+.box svg {
     color: #fff;
+}
+
+.arrow svg {
     rotate: 180deg;
+}
+
+.search-wrapper {
+    min-width: 380px;
+    background-color: #212121;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.2rem 1.6rem;
+}
+
+.search-wrapper svg {
+    color: #fff;
+    width: 24px;
+    height: 24px;
+}
+
+.search-wrapper input {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.6rem;
+    width: 100%;
+    outline: none;
 }
 
 </style>

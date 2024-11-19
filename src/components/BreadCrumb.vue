@@ -37,6 +37,10 @@ watch(route, (newRoute) => {
 </template>
 
 <style scoped>
+.breadcrumb {
+    flex: 1;
+}
+
 .breadcrumb ul {
     display: flex;
     list-style: none;
