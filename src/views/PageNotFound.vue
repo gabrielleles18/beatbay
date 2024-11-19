@@ -17,6 +17,7 @@ import { RouterLink } from 'vue-router';
     justify-content: center;
     height: 100vh;
     text-align: center;
+    box-sizing: border-box;
 }
 
 .page-not-found h1 {

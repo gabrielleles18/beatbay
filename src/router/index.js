@@ -7,12 +7,12 @@ const router = createRouter({
     routes: [
         {
             path: '/',
-            name: 'home',
+            name: 'Home',
             component: HomeView,
         },
         {
             path: '/discover',
-            name: 'discover',
+            name: 'Discover',
             component: () => import('../views/Discover.vue'),
         },
         {path: '/:pathMatch(.*)*', component: PageNotFound}

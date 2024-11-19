@@ -1,15 +1,15 @@
 <script setup>
 import {RouterView} from 'vue-router'
 import Aside from "@/components/Aside.vue";
+import Header from "@/components/Header.vue";
 </script>
 
 <template>
-    <header>
-    </header>
-
+    <header/>
     <main>
         <Aside/>
         <div class="content">
+            <Header/>
             <RouterView/>
         </div>
     </main>
@@ -27,5 +27,8 @@ header {
     height: 100vh;
     overflow-y: auto;
     background-color: #121212;
+    gap: 4rem;
+    display: flex;
+    flex-direction: column;
 }
 </style>
