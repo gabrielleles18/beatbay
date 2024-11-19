@@ -1,5 +1,5 @@
 <template>
-    This is an about page
+    Discover page
 </template>
 
 <style>

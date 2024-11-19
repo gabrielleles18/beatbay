@@ -3,6 +3,7 @@ import {RouterView} from 'vue-router'
 import Aside from "@/components/Aside.vue";
 import Header from "@/components/Header.vue";
 import {provide, ref} from 'vue'
+import Player from "@/components/Player.vue";
 
 const OpenSandwich = ref(false);
 provide('OpenSandwich', OpenSandwich);
@@ -18,6 +19,9 @@ provide('OpenSandwich', OpenSandwich);
             <RouterView/>
         </div>
     </main>
+    <footer>
+        <Player/>
+    </footer>
 </template>
 
 <style scoped>
@@ -40,5 +44,11 @@ header {
 
 .content.sandwich {
     margin-left: 125px;
+}
+
+footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
 }
 </style>

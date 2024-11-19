@@ -161,7 +161,6 @@ aside.sandwich {
 }
 
 aside.sandwich .nav-menu a {
-    width: 125px;
     justify-content: center;
 }
 
