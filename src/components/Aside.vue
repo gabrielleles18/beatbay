@@ -10,53 +10,58 @@ import IconHeart from "@/components/icons/IconHeart.vue";
 import IconFiles from "@/components/icons/IconFiles.vue";
 import IconPlaylist from "@/components/icons/IconPlaylist.vue";
 
+import {inject} from 'vue';
+
+const OpenSandwich = inject('OpenSandwich');
+
 </script>
 
 <template>
-    <aside>
+    <aside :class="{sandwich: OpenSandwich}">
         <RouterLink to="/">
             <img alt="BeatBay logo" class="logo" src="@/assets/logo.svg" width="123" height="45"/>
+            <img alt="BeatBay logo" class="logo-icon" src="@/assets/logo-icon.svg" width="123" height="45"/>
         </RouterLink>
 
         <nav class="nav-menu">
-            <RouterLink to="/">
+            <RouterLink to="/" title="Home">
                 <IconHome/>
-                Home
+                <p>Home</p>
             </RouterLink>
-            <RouterLink to="/discover" class="active">
+            <RouterLink to="/discover" title="Discover">
                 <IconDiscover/>
-                Discover
+                <p>Discover</p>
             </RouterLink>
-            <RouterLink to="/radio">
+            <RouterLink to="/radio" title="Radio">
                 <IconRadio/>
-                Radio
+                <p>Radio</p>
             </RouterLink>
 
-            <RouterLink to="/albums">
+            <RouterLink to="/albums" title="Albums">
                 <IconDisc/>
-                Albums
+                <p>Albums</p>
             </RouterLink>
 
-            <RouterLink to="/podcast">
+            <RouterLink to="/podcast" title="Podcast">
                 <IconMic/>
-                Podcast
+                <p>Podcast</p>
             </RouterLink>
         </nav>
 
         <div class="row">
             <h3>Library</h3>
             <nav class="nav-menu">
-                <RouterLink to="/recently-added">
+                <RouterLink to="/recently-added" title="Recently Added">
                     <IconAddMusic/>
-                    Recently Added
+                    <p>Recently Added</p>
                 </RouterLink>
-                <RouterLink to="/favorite">
+                <RouterLink to="/favorite" title="Favorite Songs">
                     <IconHeart/>
-                    Favorite Songs
+                    <p>Favorite Songs</p>
                 </RouterLink>
-                <RouterLink to="/local-files">
+                <RouterLink to="/local-files" title="Local Files">
                     <IconFiles/>
-                    Local Files
+                    <p>Local Files</p>
                 </RouterLink>
             </nav>
         </div>
@@ -64,17 +69,17 @@ import IconPlaylist from "@/components/icons/IconPlaylist.vue";
         <div class="row">
             <h3>Playlist</h3>
             <nav class="nav-menu">
-                <RouterLink to="/1">
+                <RouterLink to="/1" title="Lo-fi Music">
                     <IconPlaylist/>
-                    Lo-fi Music
+                    <p>Lo-fi Music</p>
                 </RouterLink>
-                <RouterLink to="/2">
+                <RouterLink to="/2" title="Best of Bon Jovi">
                     <IconPlaylist/>
-                    Best of Bon Jovi
+                    <p>Best of Bon Jovi</p>
                 </RouterLink>
-                <RouterLink to="/3">
+                <RouterLink to="/3" title="Best of John Mayer">
                     <IconPlaylist/>
-                    Best of John Mayer
+                    <p>Best of John Mayer</p>
                 </RouterLink>
             </nav>
         </div>
@@ -90,10 +95,16 @@ aside {
     gap: 4rem;
     display: flex;
     flex-direction: column;
+    transition: width 0.3s ease;
 }
 
 .logo {
     margin: 0 3.2rem;
+}
+
+.logo-icon {
+    display: none;
+    transition: all 0.3s;
 }
 
 .nav-menu {
@@ -102,7 +113,7 @@ aside {
 }
 
 .nav-menu a {
-    padding: 1.3rem 0 1.3rem 3.2rem;
+    padding: 1.3rem 3.2rem 1.3rem 3.2rem;
     color: #949494;
     align-items: center;
     display: flex;
@@ -142,5 +153,32 @@ aside {
     margin: 0 3.2rem 1rem;
     font-weight: 600;
     text-transform: uppercase;
+}
+
+
+aside.sandwich {
+    width: 125px;
+}
+
+aside.sandwich .nav-menu a {
+    width: 125px;
+    justify-content: center;
+}
+
+aside.sandwich .nav-menu p {
+    display: none;
+}
+
+aside.sandwich .nav-menu svg {
+    width: 28px;
+    height: 28px;
+}
+
+aside.sandwich .logo {
+    display: none;
+}
+
+aside.sandwich .logo-icon {
+    display: flex;
 }
 </style>

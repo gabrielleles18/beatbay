@@ -3,11 +3,20 @@ import IconArrow from "@/components/icons/IconArrow.vue";
 import BreadCrumb from "@/components/BreadCrumb";
 import IconSearch from "@/components/icons/IconSearch.vue";
 import IconBell from "@/components/icons/IconBell.vue";
+
+import {inject} from 'vue';
+
+const OpenSandwich = inject('OpenSandwich');
+
+function handleOpenSandwich() {
+    OpenSandwich.value = !OpenSandwich.value;
+}
+
 </script>
 
 <template>
     <header>
-        <div class="box arrow">
+        <div class="box arrow" @click="handleOpenSandwich" :class="{sandwich :OpenSandwich}">
             <IconArrow/>
         </div>
         <BreadCrumb/>
@@ -50,6 +59,11 @@ header {
 
 .arrow svg {
     rotate: 180deg;
+    transition: rotate 0.3s;
+}
+
+.arrow.sandwich svg {
+    rotate: 0deg;
 }
 
 .search-wrapper {
