@@ -3,6 +3,7 @@ import IconArrow from "@/components/icons/IconArrow.vue";
 import BreadCrumb from "@/components/BreadCrumb";
 import IconSearch from "@/components/icons/IconSearch.vue";
 import IconBell from "@/components/icons/IconBell.vue";
+import axios from 'axios';
 
 import {inject} from 'vue';
 
@@ -10,6 +11,25 @@ const OpenSandwich = inject('OpenSandwich');
 
 function handleOpenSandwich() {
     OpenSandwich.value = !OpenSandwich.value;
+}
+
+function handlleSpot() {
+    axios.post('https://accounts.spotify.com/api/token',
+        new URLSearchParams({
+            grant_type: 'client_credentials',
+            client_id: '9cd8b8d978604b6d9839dbf7ad04aa8a',
+            client_secret: 'd10f6e2aff224c5d8c02f4aaf0cef7aa'
+        }),
+        {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }
+    ).then(response => {
+        console.log(response.data);
+    }).catch(error => {
+        console.error(error);
+    });
 }
 
 </script>
@@ -24,9 +44,9 @@ function handleOpenSandwich() {
             <IconSearch/>
             <input type="text" placeholder="Search music, artist, albums..."/>
         </div>
-        <div class="box">
+        <button class="box" @click="handlleSpot">
             <IconBell/>
-        </div>
+        </button>
     </header>
 </template>
 
