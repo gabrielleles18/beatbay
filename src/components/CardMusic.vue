@@ -4,33 +4,12 @@ import IconHeadPhone from "@/components/icons/IconHeadPhone.vue";
 import IconMore from "@/components/icons/IconMore.vue";
 import IconClock from "@/components/icons/IconClock.vue";
 import IconHeartOutline from "@/components/icons/IconHeartOutline.vue";
-import IconPlay from "@/components/icons/IconPlay.vue";
-import {ref} from 'vue';
-
-const showPlay = ref(false);
-
-function handleMouseOver(event) {
-    console.log(event);
-    if (event.target === event.currentTarget) {
-        showPlay.value = true;
-        console.log('show play');
-    }
-}
-
-function handleMouseOut(event) {
-    console.log(event);
-
-    if (event.target === event.currentTarget) {
-        showPlay.value = false;
-        console.log('hiden play');
-    }
-}
 </script>
 
 <template>
-    <div class="card-music" @mouseover="handleMouseOver" @mouseout="handleMouseOut">
-<!--        <span v-if="!showPlay">1</span>-->
-<!--        <IconPlay class="icon-play" v-if="showPlay"/>-->
+    <div class="card-music">
+        <span>1</span>
+        <!--        <IconPlay class="icon-play" v-if="showPlay"/>-->
         <img src="@/assets/background.png" alt="">
         <p>Shape of You</p>
         <div class="listeners item-icon">
@@ -54,7 +33,7 @@ function handleMouseOut(event) {
     width: 100%;
     display: flex;
     align-items: center;
-    //gap: 1.6rem;
+    gap: 1.6rem;
     font-size: 1.7rem;
     font-weight: 700;
     color: #fff;
@@ -100,7 +79,7 @@ function handleMouseOut(event) {
     gap: 1.2rem;
 }
 
-.icon-more{
+.icon-more {
     width: 45px;
     padding-right: 1.6rem;
 }
