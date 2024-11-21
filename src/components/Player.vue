@@ -7,9 +7,14 @@ import IconBackwardSolid from "@/components/icons/IconBackwardSolid.vue";
 import IconPlay from "@/components/icons/IconPlay.vue";
 import IconRepeat from "@/components/icons/IconRepeat.vue";
 import IconPause from "@/components/icons/IconPause.vue";
+import IconVolumeHigh from "@/components/icons/IconVolumeHigh.vue";
+import IconMusicQueue from "@/components/icons/IconMusicQueue.vue";
+import IconVolumeMute from "@/components/icons/IconVolumeMute.vue";
+import IconVolumeMid from "@/components/icons/IconVolumeMid.vue";
 
 const isFavorite = ref(false);
 const isPlaying = ref(false);
+const rangeVolume = ref('50');
 
 function handleFavorite() {
     isFavorite.value = !isFavorite.value;
@@ -72,7 +77,24 @@ function handlePlay() {
             </button>
         </div>
         <div class="controls">
-            control
+            <div class="time">
+                1:45 / 4:42
+            </div>
+
+            <div class="volume">
+                <IconVolumeMute v-if="rangeVolume === '0'"/>
+                <IconVolumeMid v-if="rangeVolume < 49 && rangeVolume > 0"/>
+                <IconVolumeHigh v-if="rangeVolume >= 50"/>
+                <input
+                    @change="rangeVolume = $event.target.value"
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="{{rangeVolume}}"
+                />
+            </div>
+
+            <IconMusicQueue/>
         </div>
     </div>
 </template>
@@ -160,5 +182,47 @@ function handlePlay() {
 
 .play .forward svg:hover {
     transform: rotate(180deg) scale(1.06);
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    gap: 2.4rem;
+    align-items: center;
+}
+
+.controls .volume {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.controls .volume input[type="range"] {
+    -webkit-appearance: none;
+    width: 100px;
+    height: 5px;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.controls .volume input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #1DB954;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.controls .volume input[type="range"]::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: #1DB954;
+    cursor: pointer;
+    border-radius: 50%;
 }
 </style>
