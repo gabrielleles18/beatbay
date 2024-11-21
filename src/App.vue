@@ -40,6 +40,8 @@ header {
     display: flex;
     flex-direction: column;
     transition: margin-left 0.3s ease;
+    overflow-x: hidden;
+    padding-bottom: 132px;
 }
 
 .content.sandwich {
